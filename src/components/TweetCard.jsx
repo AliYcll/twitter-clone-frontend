@@ -24,27 +24,10 @@ const TweetCard = ({ tweet, onAction }) => {
     const [comments, setComments] = useState([]);
     const [editingCommentId, setEditingCommentId] = useState(null);
     const [editingContent, setEditingContent] = useState('');
-    const storageKey = `tweet_status_${tweet.id}`;
-
     useEffect(() => {
-        const stored = localStorage.getItem(storageKey);
-        if (stored) {
-            try {
-                const parsed = JSON.parse(stored);
-                setLiked(Boolean(parsed.liked));
-                setRetweeted(Boolean(parsed.retweeted));
-            } catch {
-                localStorage.removeItem(storageKey);
-            }
-        }
-    }, [storageKey]);
-
-    const saveStatus = (nextLiked, nextRetweeted) => {
-        localStorage.setItem(
-            storageKey,
-            JSON.stringify({ liked: nextLiked, retweeted: nextRetweeted })
-        );
-    };
+        setLiked(Boolean(tweet.likedByCurrentUser));
+        setRetweeted(Boolean(tweet.retweetedByCurrentUser));
+    }, [tweet.id, tweet.likedByCurrentUser, tweet.retweetedByCurrentUser]);
 
     const formatDate = (dateString) => {
         const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
@@ -178,13 +161,11 @@ const TweetCard = ({ tweet, onAction }) => {
                             if (liked) {
                                 await likeService.dislikeTweet(tweet.id);
                                 setLiked(false);
-                                saveStatus(false, retweeted);
                             } else {
                                 await likeService.likeTweet(tweet.id);
                                 setLiked(true);
-                                saveStatus(true, retweeted);
                             }
-                        })
+                        }, { refreshFeed: false })
                     }
                     disabled={submitting}
                 >
@@ -198,13 +179,11 @@ const TweetCard = ({ tweet, onAction }) => {
                             if (retweeted) {
                                 await retweetService.deleteRetweet(tweet.id);
                                 setRetweeted(false);
-                                saveStatus(liked, false);
                             } else {
                                 await retweetService.createRetweet(tweet.id);
                                 setRetweeted(true);
-                                saveStatus(liked, true);
                             }
-                        })
+                        }, { refreshFeed: false })
                     }
                     disabled={submitting}
                 >

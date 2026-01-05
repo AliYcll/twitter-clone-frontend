@@ -1,19 +1,19 @@
-ï»¿# Twitter Clone Frontend
+# Twitter Clone Frontend
 
-Bu proje, Twitter Clone backend API'si ile birlikte Ã§alÄ±ÅŸan React (Vite) tabanlÄ± frontend uygulamasÄ±dÄ±r. KullanÄ±cÄ± kaydÄ±, giriÅŸ, tweet akÄ±ÅŸÄ± ve etkileÅŸim (like/retweet/yorum) gibi temel akÄ±ÅŸlarÄ± web arayÃ¼zÃ¼ Ã¼zerinden sunar.
+Bu proje, Twitter Clone backend API'si ile birlikte çalışan React (Vite) tabanlı frontend uygulamasıdır. Kullanıcı kaydı, giriş, tweet akışı ve etkileşim (like/retweet/yorum) gibi temel akışları web arayüzü üzerinden sunar.
 
-## BaÄŸlantÄ±lÄ± Backend
+## Bağlantılı Backend
 
-Bu frontend, aÅŸaÄŸÄ±daki backend repo ile uyumludur:
+Bu frontend, aşağıdaki backend repo ile uyumludur:
 
 - Backend Repo: https://github.com/AliYcll/twitter-clone-api
-- API Base URL (varsayÄ±lan): `http://localhost:8080/api/v1`
+- API Base URL (varsayılan): `http://localhost:8080/api/v1`
 
-API URL'leri frontend iÃ§inde `src/services/*` dosyalarÄ±nda sabitlenmiÅŸtir. FarklÄ± bir port veya base path kullanacaksan bu dosyalarÄ± gÃ¼ncellemelisin.
+API URL'leri frontend içinde `src/services/*` dosyalarında sabitlenmiştir. Farklı bir port veya base path kullanacaksan bu dosyaları güncellemelisin.
 
 ## Gereksinimler
 
-- Node.js (LTS Ã¶nerilir)
+- Node.js (LTS önerilir)
 - npm
 
 ## Kurulum
@@ -23,24 +23,24 @@ cd frontend
 npm install
 ```
 
-## Ã‡alÄ±ÅŸtÄ±rma
+## Çalıştırma
 
 ```bash
 npm run dev
 ```
 
-Uygulama varsayÄ±lan olarak `http://localhost:3200` adresinde Ã§alÄ±ÅŸÄ±r. Port ayarÄ± `vite.config.js` iÃ§inde sabitlenmiÅŸtir.
+Uygulama varsayılan olarak `http://localhost:3200` adresinde çalışır. Port ayarı `vite.config.js` içinde sabitlenmiştir.
 
-## KullanÄ±cÄ± AkÄ±ÅŸÄ± (Ã–zet)
+## Kullanıcı Akışı (Özet)
 
-1) Register sayfasÄ±ndan kullanÄ±cÄ± oluÅŸtur
-2) Login ile token alÄ±nÄ±r
-3) Token localStorage iÃ§inde saklanÄ±r
+1) Register sayfasından kullanıcı oluştur
+2) Login ile token alınır
+3) Token localStorage içinde saklanır
 4) Yetkili istekler `Authorization: Bearer <token>` ile backend'e gider
 
-## API Endpoint Ã–zetleri
+## API Endpoint Özetleri
 
-VarsayÄ±lan base URL: `http://localhost:8080/api/v1`
+Varsayılan base URL: `http://localhost:8080/api/v1`
 
 - Auth
   - `POST /auth/register`
@@ -65,28 +65,29 @@ VarsayÄ±lan base URL: `http://localhost:8080/api/v1`
 - Users
   - `GET /users/me`
 
-## Dosya YapÄ±sÄ± (Ã–zet)
+## Dosya Yapısı (Özet)
 
 - `src/pages`: Sayfalar (Home, Login, Register, Retweets, MyTweets)
-- `src/components`: UI bileÅŸenleri (TweetCard, TweetList, TweetForm)
-- `src/services`: Backend API Ã§aÄŸrÄ±larÄ±
-- `src/context`: AuthContext (login/state yÃ¶netimi)
+- `src/components`: UI bileşenleri (TweetCard, TweetList, TweetForm)
+- `src/services`: Backend API çağrıları
+- `src/context`: AuthContext (login/state yönetimi)
 
-## SÄ±k KarÅŸÄ±laÅŸÄ±lan Sorunlar
+## Sık Karşılaşılan Sorunlar
 
 - 401 Unauthorized
-  - Login olun ve localStorage'da token oluÅŸtuÄŸundan emin olun.
-- CORS hatasÄ±
-  - Backend `SecurityConfiguration` iÃ§inde `http://localhost:3200` izinli olmalÄ±.
-- Backend kapalÄ±
-  - Frontend tek baÅŸÄ±na Ã§alÄ±ÅŸmaz; backend'i Ã¶nce ayaÄŸa kaldÄ±rÄ±n.
+  - Login olun ve localStorage'da token oluştuğundan emin olun.
+- CORS hatası
+  - Backend `SecurityConfiguration` içinde `http://localhost:3200` izinli olmalı.
+- Backend kapalı
+  - Frontend tek başına çalışmaz; backend'i önce ayağa kaldırın.
 
-## GeliÅŸtirme NotlarÄ±
+## Geliştirme Notları
 
-- API base URL'leri `src/services/*` iÃ§inde sabit.
-- Ä°stersen tek bir `API_BASE_URL` dosyasÄ± oluÅŸturup servisleri buradan besleyebilirsin.
-- Vite portu `vite.config.js` iÃ§inde 3200 olarak ayarlÄ±.
+- API base URL'leri `src/services/*` içinde sabit.
+- İstersen tek bir `API_BASE_URL` dosyası oluşturup servisleri buradan besleyebilirsin.
+- Vite portu `vite.config.js` içinde 3200 olarak ayarlı.
 
 ## Lisans
 
-Bu repo Ã¶rnek/egitim amaÃ§lÄ± kullanÄ±lÄ±r.
+Bu repo örnek/egitim amaçlı kullanılır.
+
