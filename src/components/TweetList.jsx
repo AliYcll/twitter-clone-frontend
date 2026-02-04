@@ -3,11 +3,11 @@ import TweetCard from './TweetCard';
 
 const TweetList = ({ tweets, onAction }) => {
     if (!tweets || tweets.length === 0) {
-        return <p className="no-tweets">No tweets to display yet.</p>;
+        return <div className="p-8 text-center text-gray-text">No posts to display.</div>;
     }
 
     return (
-        <div className="tweet-list">
+        <div className="flex flex-col">
             {tweets.map((tweet) => (
                 <TweetCard key={tweet.id} tweet={tweet} onAction={onAction} />
             ))}
